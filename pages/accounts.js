@@ -1,17 +1,16 @@
-import styles from './_app'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-// reference: https://www.youtube.com/watch?v=Sklc_fQBmcs
-// docs: https://nextjs.org/docs/basic-features
+import '../styles/accounts.module.css'
 
 export default function Accounts() {
 
     const router = useRouter()
-    const data = require('../data/act.json')
-    const [account, setAccount] = useState(data[0]);
+    const allData = require('../data/act.json')
+    const data = allData.slice(10, 30)
     const headings = Object.keys(data[0]);
 
-    console.log(headings)
+    const [selected1, setSelected1] = useState(headings[0]);
+    const [selected2, setSelected2] = useState(headings[1]);
 
     // const searchData = (query) => {
     //     for(var i = 0, numItems = data.length; i < numItems; i++) {
@@ -26,28 +25,67 @@ export default function Accounts() {
         <div>
           <title>Accounts – Skot</title>
           <h1>Accounts</h1>
-          <h2>Index:</h2>
-          <input id='index' defaultValue={''} onChange={(e) => {e.target.value && setAccount(data[e.target.value])}}/>
-          <p>{account["First Name"]}</p>
-          <p>{account["Surname"]}</p>
-          {/* <pre id="json">
-              {JSON.stringify(account, null, 2)}
-          </pre> */}
-          <table>
-          <tr>
+          <table className="main-table">
+          <tr style={{textAlign: 'left'}}>
             <th>First Name</th>
             <th>Surname</th>
             <th>Account Manager</th>
+            <th>
+              <select onChange={(e) => setSelected1(e.target.value)}>
+                { headings.map(option => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                )) }
+              </select>
+            </th>
+            <th>
+              <select onChange={(e) => setSelected2(e.target.value)}>
+                { headings.map(option => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                )) }
+              </select>
+            </th>
+            <th></th>
           </tr>
           { data.map((account, index) => (
-            <tr>
+            <tr key={index}>
               <td>{account["First Name"]}</td>
               <td>{account["Surname"]}</td>
               <td>{account["Account Manager"]}</td>
-              <td><button className={styles.largeButton} type="button" onClick={() => router.push('/account/' + account["Surname"])}>View</button></td>
+              <td>{account[selected1]}</td>
+              <td>{account[selected2]}</td>
+              <td><button type="button" onClick={() => router.push('/account/' + account["First Name"] + '-' + account["Surname"])}>View</button></td>
             </tr>
           ))}
           </table>
         </div>
       )
 }
+
+// export const styles = StyleSheet.create({
+//   container: {
+//     text-align: center;
+//   },
+
+//   pageTitle: {
+//     font-size: 25px;
+//   },
+
+//   largeButton: {
+//     padding: 15px;
+//     background-color: #419CD8;
+//     border: white;
+//     color: white;
+//     font-size: 15px;
+//     font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+//     border-radius: 10px;
+//   },
+
+//   largeButton:hover {
+//     background-color: #3784b8;
+//     color: white;
+//   },
+// }) 
