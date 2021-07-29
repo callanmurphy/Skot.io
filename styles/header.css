@@ -2,25 +2,30 @@
   padding-right: 25px;
   padding-left: 25px;
   position: fixed;
+  display: flex;
   justify-content: stretch;
-  align-items: center; /* align vertical */
+  align-items: center;
   top: 0px;
   left: 0px;
   right: 0px;
+  width: 100%;
   background: #05083e;
   height: 80px;
 }
 
 #nav-title {
   /* float: left; */
+  /* width: 70%; */
   /* padding-top: 27px; */
   font-size: 20px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 #nav-menu {
   color: white;
   text-align: right;
+  /* float: right; */
   /* padding-right: 40px; */
   /* padding-right: 10px; */
   /* padding-top: 19px; */
@@ -34,7 +39,7 @@
 
 #nav-menu li {
   display: inline;
-  float: right;
+  /* float: right; */
   /* margin-left: 10px; */
   font-size: 16px;
 }

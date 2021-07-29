@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import '../styles/header.css'
 import Link from 'next/link'
 import Head from "next/head";
+import Image from 'next/image'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <div id="nav-bar">
         <div id="nav-title">
-          <Link href="/"><a>Skot</a></Link>
+          <Link href="/">
+            <Image src={"/logo.png"} alt="Site Logo" width='156' height='61' />
+          </Link>
         </div>
         <div id="nav-menu">
           <ul>
