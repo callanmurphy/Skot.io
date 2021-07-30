@@ -1,61 +1,46 @@
 #nav-bar {
-  padding-right: 25px;
+  padding-right: 75px;
   padding-left: 25px;
   position: fixed;
   display: flex;
-  justify-content: stretch;
+  justify-content: space-between;
   align-items: center;
   top: 0px;
   left: 0px;
   right: 0px;
   width: 100%;
-  background: #05083e;
+  background: #121212;
   height: 80px;
 }
 
-#nav-title {
-  /* float: left; */
-  /* width: 70%; */
-  /* padding-top: 27px; */
-  font-size: 20px;
-  color: #ffffff;
+#nav-logo {
   cursor: pointer;
-}
-
-#nav-menu {
-  color: white;
-  text-align: right;
-  /* float: right; */
-  /* padding-right: 40px; */
-  /* padding-right: 10px; */
-  /* padding-top: 19px; */
-}
-
-#nav-menu ul {
-  list-style-type: none;
-  /* margin: 0; */
-  /* padding: 0; */
 }
 
 #nav-menu li {
   display: inline;
-  /* float: right; */
-  /* margin-left: 10px; */
   font-size: 16px;
+  color: white;
 }
 
 #nav-menu li a {
-  display: inline-block;
-  /* padding: 10px; */
-  color: white;
-  text-decoration: none;
+  padding: 15px;
 }
 
-#current-page li a {
-  text-decoration: underline;
+#current-page {
+  font-weight: bold;
+  color: #06A682;
+  /* text-decoration: underline; */
 }
 
 #nav-menu li a:hover {
-  text-decoration: underline;
-  transition: 0.2s;
+  color: #06A682;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon:hover {
+  opacity: 0.6;
 }

@@ -9,11 +9,23 @@ a {
 }
 
 body {
-  /* margin-left: 40px; */
-  background-color: "#121212";
-  font-family: Arial, sans-serif;
-  /* padding-top: 70px; */
-  /* margin-right: 40px; */
+  background-color: #ffffff;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+select {
+  min-width: 100px;
+  max-width: 250px;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff;
 }
 
 img.site-logo {
@@ -38,28 +50,21 @@ img.site-logo {
   text-align: center;
 }
 
-.main-table thead tr {
-  background-color: #009879;
-  color: #ffffff;
-  text-align: left;
+button {
+  padding: 10px 15px;
+  background-color: #181818;
+  border: white;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.main-table th,
-.main-table td {
-  padding: 12px 15px;
+button:hover {
+  background-color: #06A682;
+  color: white;
 }
 
-.main-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.main-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
-.main-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
 
 /* mobile settings (or if desktop window is too small) */
 @media screen and (min-width: 0px) and (max-width: 720px) {

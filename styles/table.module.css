@@ -1,0 +1,52 @@
+.largeButton {
+  padding: 15px;
+  background-color: #419cd8;
+  border: white;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.largeButton:hover {
+  background-color: #3784b8;
+  color: white;
+}
+
+.mainTable {
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
+  /* -moz-box-shadow: 0px -10px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px -10px 5px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0px -10px 5px  rgba(0,0,0,0.6); */
+  border-radius: 15px 15px 0px 0px;
+}
+
+.mainTable th {
+  background-color: #06A682;
+  height: 70px;
+  color: #ffffff;
+}
+
+.mainTable tr {
+  background-color: #dfdfdf;
+  color: #161616;
+}
+
+.mainTable th,
+.mainTable td {
+  padding: 12px 15px;
+}
+
+.mainTable th:first-child{
+  border-radius:10px 0 0 0px;
+}
+
+.mainTable th:last-child{
+  border-radius:0 10px 0px 0;
+}
+
+.mainTable tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}

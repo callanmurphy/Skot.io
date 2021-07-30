@@ -1,5 +1,5 @@
-DARK = true;
-
 export const colours = {
-    body: DARK ? '#121212' : '#000000'
+    blue: '#3784b8',
+    green: '#06A682',
+    purple: '#3784b8',
 }

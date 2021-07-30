@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import '../styles/accounts.module.css'
+import styles from '../styles/table.module.css'
 
 export default function Accounts() {
 
@@ -9,8 +9,13 @@ export default function Accounts() {
     const data = allData.slice(10, 30)
     const headings = Object.keys(data[0]);
 
+    const [selections, setSelections] = useState([headings[0], headings[1], headings[2]]);
+
     const [selected1, setSelected1] = useState(headings[0]);
     const [selected2, setSelected2] = useState(headings[1]);
+    const [selected3, setSelected3] = useState(headings[2]);
+
+    const setSelectedFunctions = [setSelected1, setSelected2, setSelected3]
 
     // const searchData = (query) => {
     //     for(var i = 0, numItems = data.length; i < numItems; i++) {
@@ -23,31 +28,16 @@ export default function Accounts() {
 
     return (
         <div>
-          <title>Accounts – Skot</title>
-          <h1>Accounts</h1>
-          <table className="main-table">
-          <tr style={{textAlign: 'left'}}>
-            <th>First Name</th>
-            <th>Surname</th>
+          <table className={styles.mainTable} cellspacing="0">
+          <tr>
+            <th>First</th>
+            <th>Last</th>
             <th>Account Manager</th>
-            <th>
-              <select onChange={(e) => setSelected1(e.target.value)}>
-                { headings.map(option => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                )) }
-              </select>
-            </th>
-            <th>
-              <select onChange={(e) => setSelected2(e.target.value)}>
-                { headings.map(option => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                )) }
-              </select>
-            </th>
+            { selections.map((item, index) =>
+              <th><select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2, selected3])}}>
+                { headings.map(option => (<option key={option} value={option}>{option}</option>)) }
+              </select></th>
+            )}
             <th></th>
           </tr>
           { data.map((account, index) => (
@@ -57,6 +47,7 @@ export default function Accounts() {
               <td>{account["Account Manager"]}</td>
               <td>{account[selected1]}</td>
               <td>{account[selected2]}</td>
+              <td>{account[selected3]}</td>
               <td><button type="button" onClick={() => router.push('/account/' + account["First Name"] + '-' + account["Surname"])}>View</button></td>
             </tr>
           ))}
@@ -64,28 +55,3 @@ export default function Accounts() {
         </div>
       )
 }
-
-// export const styles = StyleSheet.create({
-//   container: {
-//     text-align: center;
-//   },
-
-//   pageTitle: {
-//     font-size: 25px;
-//   },
-
-//   largeButton: {
-//     padding: 15px;
-//     background-color: #419CD8;
-//     border: white;
-//     color: white;
-//     font-size: 15px;
-//     font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
-//     border-radius: 10px;
-//   },
-
-//   largeButton:hover {
-//     background-color: #3784b8;
-//     color: white;
-//   },
-// }) 
