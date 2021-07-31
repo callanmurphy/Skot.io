@@ -10,13 +10,12 @@ function MyApp({ Component, pageProps }) {
   const pages = ['Dashboard', 'Accounts', 'Calendar'];
   const [currentPage, setCurrentPage] = useState(pages[0]);
   
-  // const router = useRouter()
-  // const { account } = router.query
+  const router = useRouter()
 
   return (
     <div>
       <Head>
-        <title>Skot – {currentPage}</title>
+        <title>Skot – {router.pathname}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </Head>
@@ -28,8 +27,8 @@ function MyApp({ Component, pageProps }) {
         </div>
         <div id="nav-menu">
           <ul>
-          { pages.map((page) =>
-            <li><Link href={"/" + page.toLowerCase()}><a id={currentPage === page ? "current-page" : null} onClick={() => setCurrentPage(page)}>{page}</a></Link></li>)
+          { pages.map((page, index) =>
+            <li key={index}><Link href={"/" + page.toLowerCase()}><a id={currentPage === page ? "current-page" : null} onClick={() => setCurrentPage(page)}>{page}</a></Link></li>)
           }
           <li className={"icon"} style={{position: 'absolute', right: 25, top: 24}}>
             <Link href={"/" + pages[0].toLowerCase()}>

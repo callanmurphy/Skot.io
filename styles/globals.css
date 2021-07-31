@@ -18,12 +18,14 @@ body {
 }
 
 select {
-  min-width: 100px;
-  max-width: 250px;
+  /* min-width: 100px;
+  max-width: 250px; */
+  text-overflow: ellipsis;
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
   font-size: 16px;
+  width: 100%;
   cursor: pointer;
   background-color: #fff;
 }
@@ -61,10 +63,9 @@ button {
 }
 
 button:hover {
-  background-color: #06A682;
+  background-color: #06a682;
   color: white;
 }
-
 
 /* mobile settings (or if desktop window is too small) */
 @media screen and (min-width: 0px) and (max-width: 720px) {
