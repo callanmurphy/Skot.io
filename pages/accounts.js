@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import styles from '../styles/table.module.css'
+import styles from '../styles/accounts.module.css'
 
 export default function Accounts() {
 

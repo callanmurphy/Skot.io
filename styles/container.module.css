@@ -1,0 +1,26 @@
+.container {
+  margin: 0 auto;
+  flex: 0.5;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 15px 15px 15px 15px;
+}
+
+.containerHeader {
+  background-color: #06a682;
+  border-radius: 15px 15px 0px 0px;
+  font-size: 22px;
+  color: #ffffff;
+  text-align: center;
+  padding: 1% 5%;
+}
+
+.containerBody {
+  background-color: #f3f3f3;
+  border-radius: 0px 0px 15px 15px;
+  color: #000000;
+  font-size: 18px;
+  padding: 3% 5%;
+}

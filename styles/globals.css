@@ -8,18 +8,19 @@ a {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 22px;
+}
+
 body {
   background-color: #ffffff;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  padding-top: 70px;
+  padding-top: 120px;
   padding-bottom: 70px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 0 3%;
 }
 
 select {
-  /* min-width: 100px;
-  max-width: 250px; */
   text-overflow: ellipsis;
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
