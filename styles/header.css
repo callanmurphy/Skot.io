@@ -11,6 +11,7 @@
   width: 100%;
   background: #121212;
   height: 80px;
+  z-index: 10;
 }
 
 #nav-logo {
@@ -29,12 +30,12 @@
 
 #current-page {
   font-weight: bold;
-  color: #06A682;
+  color: #06a682;
   /* text-decoration: underline; */
 }
 
 #nav-menu li a:hover {
-  color: #06A682;
+  color: #06a682;
 }
 
 .icon {

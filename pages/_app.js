@@ -6,9 +6,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router' 
 import { useState } from 'react';
 
-function MyApp({ Component, pageProps }) {
-  const pages = ['Dashboard', 'Accounts', 'Calendar'];
-  const [currentPage, setCurrentPage] = useState(pages[0]);
+function Skot({ Component, pageProps }) {
+  const pages = ['dashboard', 'accounts', 'calendar'];
   
   const router = useRouter()
 
@@ -16,23 +15,24 @@ function MyApp({ Component, pageProps }) {
     <div>
       <Head>
         <title>Skot – {router.pathname}</title>
+        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </Head>
       <div id="nav-bar">
         <div id="nav-logo">
           <Link href={"/" + pages[0].toLowerCase()}>
-            <Image src={"/logo.png"} alt="Site Logo" width='156' height='61' onClick={() => setCurrentPage(pages[0])}/>
+            <Image src={"/logo.png"} alt="Site Logo" width='156' height='61'/>
           </Link>
         </div>
         <div id="nav-menu">
           <ul>
           { pages.map((page, index) =>
-            <li key={index}><Link href={"/" + page.toLowerCase()}><a id={currentPage === page ? "current-page" : null} onClick={() => setCurrentPage(page)}>{page}</a></Link></li>)
+            <li key={index}><Link href={"/" + page}><a id={router.pathname === "/" + page ? "current-page" : null}>{page.charAt(0).toUpperCase() + page.slice(1)}</a></Link></li>)
           }
           <li className={"icon"} style={{position: 'absolute', right: 25, top: 24}}>
-            <Link href={"/" + pages[0].toLowerCase()}>
-              <Image src={"/profile.svg"} alt="Site Logo" width='35' height='35' onClick={() => setCurrentPage(pages[0])}/>
+            <Link href={"/" + pages[0]}>
+              <Image src={"/profile.svg"} alt="Site Logo" width='35' height='35'/>
             </Link>
           </li>
           </ul>
@@ -46,4 +46,14 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default Skot
+
+// export async function getServerSideProps(context) {
+//   const { client } = await connectToDatabase()
+
+//   const isConnected = await client.isConnected()
+
+//   return {
+//     props: { isConnected },
+//   }
+// }

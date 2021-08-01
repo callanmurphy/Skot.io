@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import styles from '../styles/accounts.module.css'
+import { connectToDatabase } from "../../lib/mongodb";
+import styles from '../../styles/accounts.module.css'
 
-export default function Accounts() {
+export default function Accounts({ accounts }) {
 
     const router = useRouter()
-    const allData = require('../data/act.json')
-    const data = allData.slice(10, 30)
+    const data = accounts
     const headings = Object.keys(data[0]);
 
     const [selections, setSelections] = useState([headings[0], headings[1]]);
@@ -16,24 +16,15 @@ export default function Accounts() {
 
     const setSelectedFunctions = [setSelected1, setSelected2]
 
-    // const searchData = (category, query) => {
-    //     for(var i = 0, numItems = data.length; i < numItems; i++) {
-    //         if(data[i].Surname === query) {
-    //             setAccount(data[i]);
-    //             console.log(data[i].Surname)
-    //         }
-    //     }
-    // }
-
     return (
         <div>
           <table className={styles.mainTable} cellSpacing="0">
           <tr>
             <th>First</th>
             <th>Last</th>
-            <th>Account Manager</th>
+            <th>Advisor</th>
             { selections.map((item, index) =>
-              <th><select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
+              <th key={index}><select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
                 { headings.map(option => (<option key={option} value={option}>{option}</option>)) }
               </select></th>
             )}
@@ -46,10 +37,27 @@ export default function Accounts() {
               <td>{account["Account Manager"]}</td>
               <td>{account[selected1]}</td>
               <td>{account[selected2]}</td>
-              <td><button type="button" onClick={() => router.push('/account/' + account["First Name"] + '-' + account["Surname"])}>View</button></td>
+              <td><button type="button" onClick={() => router.push('/accounts/' + account._id.toString())}>View</button></td>
             </tr>
           ))}
           </table>
         </div>
       )
+}
+
+export async function getServerSideProps() {
+  const { db } = await connectToDatabase();
+
+  const accounts = await db
+    .collection("accounts")
+    .find({})
+    .sort({ "Edit Date": -1 })
+    .limit(20)
+    .toArray();
+
+  return {
+    props: {
+      accounts: JSON.parse(JSON.stringify(accounts)),
+    },
+  };
 }
