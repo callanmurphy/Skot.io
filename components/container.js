@@ -7,9 +7,9 @@ class Container extends Component {
     this.state = {
       colour: (
         props.colour === 1 ? '#E9AC00' : 
-        props.colour === 2 ? '#C100A7' : 
+        props.colour === 2 ? '#06a682' : 
         props.colour === 3 ? '#0063D6' :
-        '#06a682'
+        '#121212'
       )
     }
   }
@@ -25,7 +25,6 @@ class Container extends Component {
           </div>
           <div className={styles.containerBody}>
             {body}
-            <p>{bodyText}</p>
           </div>
         </div>
       )

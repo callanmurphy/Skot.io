@@ -16,7 +16,7 @@ export default function Accounts() {
 
     const setSelectedFunctions = [setSelected1, setSelected2]
 
-    // const searchData = (query) => {
+    // const searchData = (category, query) => {
     //     for(var i = 0, numItems = data.length; i < numItems; i++) {
     //         if(data[i].Surname === query) {
     //             setAccount(data[i]);
