@@ -15,10 +15,10 @@
 .mainTable {
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.2);
   border-radius: 15px 15px 0px 0px;
   overflow: hidden;
 }

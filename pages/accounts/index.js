@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { connectToDatabase } from "../../util/mongodb";
+
 import styles from '../../styles/accounts.module.css'
+import SearchBar from '../../components/searchBar';
 
 export default function Accounts({ accounts }) {
 
@@ -18,6 +20,7 @@ export default function Accounts({ accounts }) {
 
     return (
         <div>
+          <SearchBar />
           <table className={styles.mainTable} cellSpacing="0">
           <tr>
             <th>First</th>
