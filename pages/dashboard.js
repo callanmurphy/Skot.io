@@ -1,19 +1,26 @@
-import { useState } from 'react'
-import Container from '../components/container'
+import { Component, useState } from 'react'
+import Container, { EditContainer } from '../components/container'
 import styles from '../styles/dashboard.module.css'
 
-export default function Dashboard() {
+export default class Dashboard extends Component{ 
+  constructor(props) {
+    super(props);
+    // this.state = {
+      
+    // }
+  }
 
-    const getToday = () => {
-      let date = new Date();
-      return date.toDateString();
-    }
+  getToday = () => {
+    let date = new Date();
+    return date.toDateString();
+  }
 
+  render() {
     return (
       <div>
         <div className={styles.row}>
-          <Container headerText={'Suggested'} body={<p>{getToday()}</p>}/>
-          <Container headerText={'Notes'} body={<p>Notes</p>} colour={1}/>
+          <Container headerText={'Suggested'} body={<p>{this.getToday()}</p>}/>
+          <EditContainer headerText={'Notes'} body={<Notes /> }colour={1}/>
         </div>
         <div className={styles.row}>
           <Container headerText={'Suggested'} body={<div><b>Hello</b><p>- hello</p><p>- goodbye</p></div>} colour={2} />
@@ -22,4 +29,17 @@ export default function Dashboard() {
         </div>
       </div>
     )
+  }
+}
+
+export function Notes() {
+  const [notesText, setNotesText] = useState('- my cool note \n- this is cool');
+  
+  const handleChange = (e) => {
+    setNotesText(e.target.value);
+  }
+
+  return (
+    <textarea value={notesText} onChange={handleChange} />
+  )
 }

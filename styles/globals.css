@@ -16,6 +16,20 @@ body {
   margin: 0 3%;
 }
 
+textarea {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  min-height: 100px;
+  width: 100%;
+  resize: vertical;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: medium;
+  border: none;
+  line-height: 150%;
+  border-radius: 0 0 15px 15px;
+  padding: 3% 5%;
+}
+
 select {
   text-overflow: ellipsis;
   border: 1px solid var(--select-border);

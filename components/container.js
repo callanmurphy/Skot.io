@@ -15,7 +15,7 @@ class Container extends Component {
   }
 
   render(){
-    let { headerText, body, bodyText } = this.props;
+    let { headerText, body } = this.props;
     let { colour } = this.state;
 
     return (
@@ -26,6 +26,34 @@ class Container extends Component {
           <div className={styles.containerBody}>
             {body}
           </div>
+        </div>
+      )
+    }
+}
+
+export class EditContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      colour: (
+        props.colour === 1 ? '#E9AC00' : 
+        props.colour === 2 ? '#06a682' : 
+        props.colour === 3 ? '#0063D6' :
+        '#121212'
+      )
+    }
+  }
+
+  render(){
+    let { headerText, body } = this.props;
+    let { colour } = this.state;
+
+    return (
+        <div className={styles.container}>
+          <div className={styles.containerHeader} style={{ backgroundColor: colour }}>
+            <h1>{headerText}</h1>
+          </div>
+          {body}
         </div>
       )
     }

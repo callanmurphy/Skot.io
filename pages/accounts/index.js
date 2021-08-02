@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { connectToDatabase } from "../../lib/mongodb";
+import { connectToDatabase } from "../../util/mongodb";
 import styles from '../../styles/accounts.module.css'
 
 export default function Accounts({ accounts }) {
