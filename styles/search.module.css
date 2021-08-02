@@ -6,8 +6,8 @@
     text-align: left;
     padding: 20px 15px 20px 15px;
     margin-bottom: 32px;
-    outline: none !important;
     margin-top: 2px;
+    outline: none !important;
     border-radius: 25px;
     border-width: 0px;
     /* border-width: 2px;
@@ -21,8 +21,8 @@
   .searchBar:focus {
     outline: none !important;
     border:2px solid #06a682;
-    margin-top: 0px;
     margin-bottom: 30px;
+    margin-top: 0px;
     box-shadow: 0px 0px 0px 0px;
     -moz-box-shadow: 0px 0px 0px 0px;
     -webkit-box-shadow: 0px 0px 0px 0px;

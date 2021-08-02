@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react';
 
 function Skot({ Component, pageProps }) {
-  const pages = ['dashboard', 'accounts', 'calendar'];
+  const pages = ['dashboard', 'accounts', 'groups', 'calendar'];
   
   const router = useRouter()
 

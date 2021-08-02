@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { connectToDatabase } from "../../util/mongodb";
 
+import { colours } from '../../components/colours';
 import styles from '../../styles/accounts.module.css'
 import SearchBar from '../../components/searchBar';
 
@@ -10,6 +11,9 @@ export default function Accounts({ accounts }) {
     const router = useRouter()
     const data = accounts
     const headings = Object.keys(data[0]);
+    const groups = [{title: 'All', users: {}}, {title: 'New August Clients', users: {}}, {title: 'RESP Accounts', users: {}}];
+
+    const [group, setGroup] = useState(groups[0]);
 
     const [selections, setSelections] = useState([headings[0], headings[1]]);
 
@@ -19,31 +23,40 @@ export default function Accounts({ accounts }) {
     const setSelectedFunctions = [setSelected1, setSelected2]
 
     return (
-        <div>
-          <SearchBar />
-          <table className={styles.mainTable} cellSpacing="0">
-          <tr>
-            <th>First</th>
-            <th>Last</th>
-            <th>Advisor</th>
-            { selections.map((item, index) =>
-              <th key={index}><select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
-                { headings.map(option => (<option key={option} value={option}>{option}</option>)) }
-              </select></th>
-            )}
-            <th></th>
-          </tr>
-          { data.map((account, index) => (
-            <tr key={account + index}>
-              <td>{account["First Name"]}</td>
-              <td>{account["Surname"]}</td>
-              <td>{account["Account Manager"]}</td>
-              <td>{account[selected1]}</td>
-              <td>{account[selected2]}</td>
-              <td><button type="button" onClick={() => router.push('/accounts/' + account._id.toString())}>View</button></td>
+        <div className={styles.twoColumns}>
+          <div>
+            <SearchBar />
+            <table className={styles.mainTable} cellSpacing="0">
+            <tr>
+              <th>First</th>
+              <th>Last</th>
+              <th>Advisor</th>
+              { selections.map((item, index) =>
+                <th key={index}><select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
+                  { headings.map(option => (<option key={option} value={option}>{option}</option>)) }
+                </select></th>
+              )}
+              <th></th>
             </tr>
-          ))}
-          </table>
+            { data.map((account, index) => (
+              <tr key={account + index}>
+                <td>{account["First Name"]}</td>
+                <td>{account["Surname"]}</td>
+                <td>{account["Account Manager"]}</td>
+                <td>{account[selected1]}</td>
+                <td>{account[selected2]}</td>
+                <td><button type="button" onClick={() => router.push('/accounts/' + account._id.toString())}>View</button></td>
+              </tr>
+            ))}
+            </table>
+          </div>
+          <div className={styles.column}>
+            { groups.map((item, index) => (
+              <button key={index} className={styles.group} onClick={() => setGroup(item)} style={{ backgroundColor: group.title === item.title ? '#06A682' : null}}>
+                {item.title}
+              </button>
+            ))}
+          </div>
         </div>
       )
 }
