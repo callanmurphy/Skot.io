@@ -14,12 +14,12 @@ export default function Account({user}) {
 
     return (
         <div>
-          <Link href="/accounts">
-            <button type="button" style={{position: 'absolute', paddingRight: 20, paddingLeft: 20}}>
+          {/* <Link href="/accounts"> */}
+            <button type="button" style={{position: 'absolute', paddingRight: 20, paddingLeft: 20}} onClick={() => router.push('/accounts')}>
                 <Image src={"/back.svg"} alt="Site Logo" width='35' height='35' alt="back"/>
                 {/* Back */}
             </button>
-          </Link>
+          {/* </Link> */}
           <table className={styles.mainTable} cellSpacing="0" style={{ maxWidth: '60%' }}>
           <tr>
             <th colSpan="2" style={{fontSize: 20}}>{account[0]["First Name"] + ' ' + account[0]["Surname"]}</th>
