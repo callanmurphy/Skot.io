@@ -54,12 +54,12 @@ export default function Accounts(props) {
     return (
         <div className={styles.twoColumns}>
           <div>
-            <SearchBar />
+            <SearchBar setData={setData} />
             <table className={styles.mainTable} cellSpacing="0">
             <tr>
               { columns.map((item, index) =>
                 // <th onClick={() => { item.sort !== null && setSort(item, !item.sort); item.sort === null && setSort(item, true) }} style={{cursor: 'pointer'}}>
-                <th>  
+                <th key={index}>  
                   {item.title}
                   {/* {item.sort !== null && <div> <Image src={"/sort.svg"} alt="Site Logo" width='20' height='20' alt="sort" className={!item.sort && "flip"}/> </div> } */}
                 </th>
@@ -114,58 +114,9 @@ export async function getServerSideProps() {
     .limit(20)
     .toArray();
 
-  // const first = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "First Name": 1 })
-  //   .limit(20)
-  //   .toArray();
-
-  // const first2 = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "First Name": -1 })
-  //   .limit(20)
-  //   .toArray();
-
-  // const last = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "Surname": 1 })
-  //   .limit(20)
-  //   .toArray();
-
-  // const last2 = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "Surname": -1 })
-  //   .limit(20)
-  //   .toArray();
-
-  // const advisor = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "Account Manager": 1 })
-  //   .limit(20)
-  //   .toArray();
-
-  // const advisor2 = await db
-  //   .collection("accounts")
-  //   .find({})
-  //   .sort({ "Account Manager": -1 })
-  //   .limit(20)
-  //   .toArray();
-
   return {
     props: {
       date: JSON.parse(JSON.stringify(date)),
-
-      // first: JSON.parse(JSON.stringify(first)),
-      // first2: JSON.parse(JSON.stringify(first2)),
-      // last: JSON.parse(JSON.stringify(last)),
-      // last2: JSON.parse(JSON.stringify(last2)),
-      // advisor: JSON.parse(JSON.stringify(advisor)),
-      // advisor2: JSON.parse(JSON.stringify(advisor2)),
     },
   };
 }

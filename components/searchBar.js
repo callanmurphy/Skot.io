@@ -1,25 +1,19 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import styles from '../styles/search.module.css'
+const axios = require('axios');
 
 export const SearchBar = (props) => {
   const [query, setQuery] = useState('');
-  const [data, setData] = useState('');
 
-  const fetchData = async (query) => {
-    try {
-      const res = await fetch(
-        `${
-          process.env.SERVER_IP
-        }search/${query}`
-      );
-      const result = await res.json();
-      alert('jerr');
-      setData(result);
-    } catch (e) {
-      alert('Error --- ', e);
-      setData([]);
-    }
-  };
+  const fetchData = (value) => {
+    axios.get('/api/search/' + value)
+    .then(function (response) {
+      response.data && response.data.length && props.setData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -35,10 +29,6 @@ export const SearchBar = (props) => {
           value={query}
           onChange={(e) => handleChange(e)}
         />
-        {data !== '' && <b>{'data is' + JSON.stringify(data)}</b>}
-        {/* { data && data.map((account, index) => {
-          <p>{account["First Name"]}</p>
-        })} */}
       </div>
     )
 }

@@ -7,7 +7,7 @@ export default async (req, res) => {
     .collection("accounts")
     .find({})
     .sort({ "Edit Date": -1 })
-    .limit(2)
+    .limit(20)
     .toArray();
 
   res.json(accounts);

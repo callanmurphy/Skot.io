@@ -24,7 +24,7 @@ export default withRouter(class Dashboard extends Component{
         <div className={styles.row}>
           <Container headerText={'Recommended'} 
             body={<><b>Reach out to...</b>{this.props.date.map((item, index) =>
-              <p style={{cursor: 'pointer'}} onClick={() => this.props.router.push('/accounts/' + item._id)}>{item["First Name"] + ' ' + item["Surname"]}</p>)}
+              <p key={index} style={{cursor: 'pointer'}} onClick={() => this.props.router.push('/accounts/' + item._id)}>{item["First Name"] + ' ' + item["Surname"]}</p>)}
             </>}/>
           <EditContainer headerText={'Notes'} body={<Notes /> }colour={1}/>
         </div>

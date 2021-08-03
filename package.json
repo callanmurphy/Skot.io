@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "fs": "^0.0.1-security",
     "mongodb": "^4.0.1",
     "mongodb-client-encryption": "^1.2.6",

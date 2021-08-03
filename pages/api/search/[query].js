@@ -8,7 +8,7 @@ export default async (req, res) => {
     .collection("accounts")
     .find({ $text: { $search: query } }, { score: { $meta: "textScore" } })
     .sort({ score: { $meta: "textScore" } })
-    .limit(5)
+    .limit(10)
     .toArray();
 
   res.json(searched);
