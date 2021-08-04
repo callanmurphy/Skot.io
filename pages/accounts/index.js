@@ -10,13 +10,9 @@ import SearchBar from '../../components/searchBar';
 export default function Accounts(props) {
 
     const router = useRouter()
-    const refreshData = () => {
-      router.replace(router.asPath);
-    }
 
     const [data, setData] = useState(props.date);
 
-    
     const headings = Object.keys(data[0]);
     const groups = [{title: 'All', users: {}}, {title: 'New August Clients', users: {}}, {title: 'RESP Accounts', users: {}}];
 

@@ -45,3 +45,37 @@
 .icon:hover {
   opacity: 0.6;
 }
+
+#nav-hamburger {
+  display: none;
+}
+
+/* mobile settings (or if desktop window is too small) */
+@media screen and (min-width: 0px) and (max-width: 650px) {
+  #nav-bar {
+    padding-left: 10px;
+    padding-right: 25px;
+  }
+  #nav-menu {
+    display: none;
+  }
+  #nav-hamburger {
+    display: inline;
+  }
+  .hamburgerOpen {
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+    left: 0px;
+    top: 80px;
+    margin-bottom: 20px;
+    background-color: #ECECEC;
+  }
+  .hamburgerOpen li {
+    list-style: none;
+    text-decoration: underline;
+    border-bottom: 1px solid #121212;
+    padding: 20px 10px;
+    font-size: 20px;
+  }
+}

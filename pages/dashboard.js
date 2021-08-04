@@ -26,13 +26,13 @@ export default withRouter(class Dashboard extends Component{
             body={<><b>Reach out to...</b>{this.props.date.map((item, index) =>
               <p key={index} style={{cursor: 'pointer'}} onClick={() => this.props.router.push('/accounts/' + item._id)}>{item["First Name"] + ' ' + item["Surname"]}</p>)}
             </>}/>
-          <EditContainer headerText={'Notes'} body={<Notes /> }colour={1}/>
+          <EditContainer headerText={this.getToday()} body={<Notes /> } colour={2} />
         </div>
-        <div className={styles.row}>
+        {/* <div className={styles.row}>
           <Container headerText={this.getToday()} body={<div><b>Hello</b><p>- hello</p><p>- goodbye</p></div>} colour={2} />
           <Container headerText={'Notes'} body={<div><b>Hello</b><p>- goodbye</p></div>} colour={2}/>
           <Container headerText={'Notes'} body={<div><b>Hello</b><p>- hello</p><p>- goodbye</p></div>}/>
-        </div>
+        </div> */}
       </div>
     )
   }
