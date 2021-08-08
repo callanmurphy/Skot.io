@@ -9,21 +9,21 @@ import { useState } from 'react';
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
   
-  useEffect(() => {
-    console.log(router.pathname)
-    if(!auth && !(router.pathname === '/login')){
-      router.push('/login')
-      return
-    }
-    if(auth && (router.pathname === '/login')){
-      router.push('/dashboard')
-      return
-    }
-  })
+  // useEffect(() => {
+  //   console.log(router.pathname)
+  //   if(!auth && !(router.pathname === '/login')){
+  //     router.push('/login')
+  //     return
+  //   }
+  //   if(auth && (router.pathname === '/login')){
+  //     router.push('/dashboard')
+  //     return
+  //   }
+  // })
 
   return (
     <div>

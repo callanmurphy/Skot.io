@@ -89,11 +89,47 @@ button:hover {
   color: white;
 }
 
-.googleCalendar {
-  border: none;
+input {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding: 13px 18px;
+  text-align: left;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #121212;
+}
+
+input:focus {
+    padding: 11px 16px;
+    border: 3px solid #4ea18f;
+    outline: none;
+    transition: .1s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  padding: 11px 16px;
+  border: 3px solid #4ea18f;
+  outline: none;
+  transition: .1s;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* mobile settings (or if desktop window is too small) */
 @media screen and (min-width: 0px) and (max-width: 650px) {
-  /* coming soon! */
+  input {
+    font-size: 16px;
+  }
 }
