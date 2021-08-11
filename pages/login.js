@@ -29,8 +29,21 @@ class Login extends Component {
     })
   }
 
+  authenticate = () => {
+    axios.get('/api/users', {
+      email: this.state.email,
+    })
+    .then((res) => {
+      alert(res.data.email)
+    })
+    .catch((res) => {
+      console.log(error);
+    })
+  }
+
   handleSubmit = () => {
-    this.fetchData();
+    this.authenticate();
+    // this.fetchData();
   }
 
   onKeyPress = (e) => {

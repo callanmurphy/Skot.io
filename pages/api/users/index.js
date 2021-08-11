@@ -17,10 +17,7 @@ export default async (req, res) => {
   } else {
     const response = await db
       .collection("users")
-      .find({})
-      .sort({ "email": 1 })
-      .limit(5)
-      .toArray();
+      .find({email: req.body.email})
 
     res.json(response);
   }
