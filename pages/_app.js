@@ -6,6 +6,7 @@ import Head from "next/head";
 import Image from 'next/image'
 import { useRouter } from 'next/router' 
 import { useState } from 'react';
+const axios = require('axios').default;
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];

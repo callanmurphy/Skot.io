@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
+const axios = require('axios').default;
 
 class Login extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Login extends Component {
     });
   };
 
-  fetchData = () => {
+  addUser = () => {
     axios.post('/api/users', {
         email: this.state.email,
         password: this.state.password
@@ -31,19 +32,22 @@ class Login extends Component {
 
   authenticate = () => {
     axios.get('/api/users', {
-      email: this.state.email,
+      params: {
+        email: '123@gmail.com'
+      }
     })
     .then((res) => {
-      alert(res.data.email)
+      console.log(res)
     })
     .catch((res) => {
+      alert('break')
       console.log(error);
     })
   }
 
   handleSubmit = () => {
     this.authenticate();
-    // this.fetchData();
+    // this.addUser();
   }
 
   onKeyPress = (e) => {
