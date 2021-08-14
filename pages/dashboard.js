@@ -1,10 +1,10 @@
+import React, { Component, useState } from 'react'
 import { withRouter } from 'next/router'
-import { Component, useState } from 'react'
 import Container, { EditContainer } from '../components/container'
 import styles from '../styles/dashboard.module.css'
 import { connectToDatabase } from "../util/mongodb";
 
-export default withRouter(class Dashboard extends Component{ 
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     // this.state = {
@@ -36,7 +36,7 @@ export default withRouter(class Dashboard extends Component{
       </div>
     )
   }
-})
+}
 
 export function Notes() {
   const [notesText, setNotesText] = useState('- my cool note \n- this is cool');
@@ -66,3 +66,5 @@ export async function getServerSideProps() {
     },
   };
 }
+
+export default Dashboard;

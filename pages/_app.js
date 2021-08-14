@@ -1,16 +1,18 @@
 import '../styles/globals.css'
 import '../styles/header.css'
-import Link from 'next/link'
+import '@fullcalendar/common/main.css'
+import '@fullcalendar/daygrid/main.css'
+import '@fullcalendar/timegrid/main.css'
 import React, { useEffect } from 'react';
+import Link from 'next/link'
 import Head from "next/head";
 import Image from 'next/image'
 import { useRouter } from 'next/router' 
 import { useState } from 'react';
-const axios = require('axios').default;
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
   
