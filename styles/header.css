@@ -1,7 +1,8 @@
 #nav-bar {
   padding-right: 75px;
   padding-left: 25px;
-  position: fixed;
+  position: absolute;
+  /* position: fixed; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,7 +70,7 @@
     left: 0px;
     top: 80px;
     margin-bottom: 20px;
-    background-color: #ECECEC;
+    background-color: #ececec;
   }
   .hamburgerOpen li {
     list-style: none;

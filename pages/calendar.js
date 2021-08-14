@@ -6,14 +6,15 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 export default function Calendar() {
 
   return(
-  <FullCalendar
-    plugins={[interactionPlugin, timeGridPlugin]}
-    initialView='timeGridWeek'
-    nowIndicator={true}
-    editable={true}
-    initialEvents={[
-      { title: 'nice event', start: new Date() }
-    ]}
-  />
-  )
+  <div>
+    <FullCalendar
+      plugins={[interactionPlugin, timeGridPlugin]}
+      initialView='timeGridWeek'
+      nowIndicator={true}
+      editable={true}
+      initialEvents={[
+        { title: 'nice event', start: new Date() }
+      ]}
+    />
+  </div>)
 }

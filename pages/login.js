@@ -11,56 +11,55 @@ class Login extends Component {
     };
   }
 
-  // handleInputChange = (name, value) => {
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
+  handleInputChange = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
 
-  // addUser = () => {
-  //   axios.post('/api/users', {
-  //       email: this.state.email,
-  //       password: this.state.password
-  //   })
-  //   .then((res) => {
-  //     alert(res)
-  //   })
-  //   .catch((res) => {
-  //     console.log(error);
-  //   })
-  // }
+  addUser = () => {
+    axios.post('/api/users', {
+        email: this.state.email,
+        password: this.state.password
+    })
+    .then((res) => {
+      alert(res)
+    })
+    .catch((res) => {
+      console.log(error);
+    })
+  }
 
-  // authenticate = () => {
-  //   axios.get('/api/users', {
-  //     params: {
-  //       email: '123@gmail.com'
-  //     }
-  //   })
-  //   .then((res) => {
-  //     console.log(res)
-  //   })
-  //   .catch((res) => {
-  //     alert('break')
-  //     console.log(error);
-  //   })
-  // }
+  authenticate = () => {
+    axios.get('/api/users', {
+      params: {
+        email: '123@gmail.com'
+      }
+    })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((res) => {
+      alert('break')
+      console.log(error);
+    })
+  }
 
-  // handleSubmit = () => {
-  //   this.authenticate();
-  //   // this.addUser();
-  // }
+  handleSubmit = () => {
+    this.authenticate();
+    // this.addUser();
+  }
 
-  // onKeyPress = (e) => {
-  //   if (e.key === 'Enter') {
-  //     this.handleSubmit();
-  //   }
-  // }
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
 
   render() {
     return (
       <div>
-        <p>HELLO</p>
-        {/* <div className={"container"}>
+        <div className={"container"}>
           <h1>Account Login</h1>
           <form onSubmit={this.handleSubmit}>
             <input type="email" value={this.state.email} onChange={(e) => this.handleInputChange("email", e.target.value)} placeholder={"Email"} style={{marginTop: 5}} />
@@ -69,7 +68,7 @@ class Login extends Component {
             <br/>
             <input type="submit" value="Login" className={"submit"} />
           </form>
-        </div> */}
+        </div>
   
   
         <style jsx>{`
