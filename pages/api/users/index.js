@@ -7,6 +7,7 @@ const saltRounds = 10;
 export default async (req, res) => {
   const { db } = await connectToDatabase();
   if (req.method === 'POST') {
+    console.log('-- post')
     console.log('post')
     const response = 
       bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
@@ -16,12 +17,11 @@ export default async (req, res) => {
       })
     res.json(response);
   } else {
-    console.log('get')
+    console.log('-- get')
     const response = await db
       .collection("users")
-      .find({email: req.body.email})
-
-    console.log(JSON.stringify(response))
+      .findOne({ email: req.query.email })
+    console.log(response)
     res.json(response);
   }
 };

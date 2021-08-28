@@ -52,7 +52,7 @@ function Skot({ Component, pageProps }) {
               <li key={index}><Link href={"/" + page}><a id={router.pathname === "/" + page ? "current-page" : null}>{page.charAt(0).toUpperCase() + page.slice(1)}</a></Link></li>)
             }
             <li className={"icon"} style={{position: 'absolute', right: 25, top: 24}}>
-              <Link href={"/" + pages[0]}>
+              <Link href={"/login"}>
                 <Image src={"/profile.svg"} alt="Site Logo" width='35' height='35' alt="profile"/>
               </Link>
             </li>

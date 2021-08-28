@@ -8,6 +8,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      user: null,
     };
   }
 
@@ -31,30 +32,31 @@ class Login extends Component {
   }
 
   authenticate = () => {
+    console.log('auth')
     axios.get('/api/users', {
       params: {
-        email: '123@gmail.com'
+        email: this.state.email
       }
     })
     .then((res) => {
-      console.log(res)
+      this.setState({user: res.data.message})
     })
     .catch((res) => {
-      alert('break')
       console.log(error);
     })
   }
 
   handleSubmit = () => {
+    console.log('handle');
     this.authenticate();
     // this.addUser();
   }
 
-  onKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      this.handleSubmit();
-    }
-  }
+  // onKeyPress = (e) => {
+  //   if (e.key === 'Enter') {
+  //     this.handleSubmit();
+  //   }
+  // }
 
   render() {
     return (
