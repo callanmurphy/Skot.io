@@ -25,21 +25,32 @@ class Login extends Component {
     })
     .then((res) => {
       alert(res)
+      this.props.setUser(res);
     })
     .catch((res) => {
       console.log(error);
     })
   }
 
+  // authenticate = async () => {
+  //   const response = await axios.get('/api/users', {
+  //     params: {
+  //       email: this.state.email
+  //     }
+  //   })
+  //   return response.data;
+  // }
+
   authenticate = () => {
-    console.log('auth')
     axios.get('/api/users', {
       params: {
-        email: this.state.email
+        email: this.state.email,
+        password: this.state.password
       }
     })
     .then((res) => {
-      this.setState({user: res.data.message})
+      alert(this.state.email)
+      this.props.setUser(res);
     })
     .catch((res) => {
       console.log(error);
@@ -47,16 +58,9 @@ class Login extends Component {
   }
 
   handleSubmit = () => {
-    console.log('handle');
     this.authenticate();
     // this.addUser();
   }
-
-  // onKeyPress = (e) => {
-  //   if (e.key === 'Enter') {
-  //     this.handleSubmit();
-  //   }
-  // }
 
   render() {
     return (

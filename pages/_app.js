@@ -12,17 +12,17 @@ import { useState } from 'react';
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];
-  const [auth, setAuth] = useState(true);
+  const [user, setUser] = useState(null);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
   
   // useEffect(() => {
-  //   console.log(router.pathname)
-  //   if(!auth && !(router.pathname === '/login')){
+  //   // alert(user);
+  //   if(!user && !(router.pathname === '/login')){
   //     router.push('/login')
   //     return
   //   }
-  //   if(auth && (router.pathname === '/login')){
+  //   if(user && (router.pathname === '/login')){
   //     router.push('/dashboard')
   //     return
   //   }
@@ -36,7 +36,7 @@ function Skot({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </Head>
-      {auth ?
+      {user ?
         <div id="nav-bar">
           <div id="nav-logo">
             <Link href={"/" + pages[0].toLowerCase()}>
@@ -72,7 +72,7 @@ function Skot({ Component, pageProps }) {
         </div>
       }
       <div>
-        <Component {...pageProps} />
+        <Component {...pageProps} setUser={(user) => setUser(user)} />
       </div>
     </div>
   )
