@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('11');
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
   

@@ -50,7 +50,14 @@ export default function Accounts(props) {
     return (
         <div className={styles.twoColumns}>
           <div>
-            <SearchBar setData={setData} />
+            <div>
+              <select className={styles.drop}>
+                { groups.map((item, index) => (
+                    <option key={index}>{item.title}</option>
+                ))}
+              </select>
+              <SearchBar setData={setData} />
+            </div>
             <table className={styles.mainTable} cellSpacing="0">
             <tr>
               { columns.map((item, index) =>
@@ -80,21 +87,6 @@ export default function Accounts(props) {
               </tr>
             ))}
             </table>
-          </div>
-          <div className={styles.column}>
-            { groups.map((item, index) => (
-              <div style={{width: '100%'}} key={index}>
-                <button key={index} className={styles.group} onClick={() => setGroup(item)} style={{ backgroundColor: group.title === item.title ? '#06A682' : null}}>
-                  {item.title}
-                </button>
-              </div>
-            ))}
-            <div style={{width: '100%'}}>
-              <button type="button" className={"circle"}>
-                <Image src={"/add.svg"} alt="Site Logo" width='35' height='35' alt="add"/>
-                {/* Add */}
-              </button>
-            </div>
           </div>
         </div>
       )

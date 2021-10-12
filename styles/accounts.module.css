@@ -58,6 +58,10 @@
   display: block;
 }
 
+.drop {
+  width: 40%;
+}
+
 .group {
   background-color: #ffffff;
   margin: 0 auto;

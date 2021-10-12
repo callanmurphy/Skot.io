@@ -20,7 +20,7 @@ export const SearchBar = (props) => {
     fetchData(e.target.value);
   }
 
-  return (<div style={{alignItems: 'center'}}>
+  return (<div style={{alignItems: 'left'}}>
         <input 
           className={styles.searchBar}
           type="text"
