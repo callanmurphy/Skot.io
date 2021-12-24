@@ -1,12 +1,12 @@
 .searchBar {
   margin: 0 auto;
   flex: 1;
-  width: 60%;
+  width: 100%;
   /* display: table; */
   text-align: left;
-  /* padding: 20px 15px 20px 15px; */
-  margin-bottom: 30px;
-  margin-top: 0px;
+  /* padding: 10px 15px; */
+  margin-bottom: 20px;
+  /* margin-top: 0px; */
   outline: none !important;
   border-radius: 25px;
   border-width: 0px;
@@ -22,12 +22,6 @@
 .searchBar:focus {
   outline: none !important;
   border: 2px solid #06a682;
-  margin-bottom: 30px;
-  margin-top: 0px;
-  box-shadow: 0px 0px 0px 0px;
-  -moz-box-shadow: 0px 0px 0px 0px;
-  -webkit-box-shadow: 0px 0px 0px 0px;
-  -o-box-shadow: 0px 0px 0px 0px;
 }
 
 .searchBar::placeholder {

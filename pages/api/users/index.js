@@ -32,6 +32,6 @@ export default async (req, res) => {
       console.log('-- email not found');
     }
     console.log(response);
-    res.json(response);
+    res.status(200).json({ response })
   }
 };

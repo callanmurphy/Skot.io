@@ -60,6 +60,16 @@
 
 .drop {
   width: 40%;
+  /* margin: 0 auto; */
+  /* flex: 1; */
+  background-color: #06a682;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .group {
@@ -95,7 +105,7 @@
 .twoColumns {
   display: flex;
   justify-content: center;
-  column-gap: 5%;
+  column-gap: 3%;
   /* justify-content: space-between; */
   padding: 10px 0;
 }

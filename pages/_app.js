@@ -12,12 +12,12 @@ import { useState } from 'react';
 
 function Skot({ Component, pageProps }) {
   const pages = ['dashboard', 'accounts', 'calendar'];
-  const [user, setUser] = useState('11');
+  const [user, setUser] = useState('22');
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
   
   // useEffect(() => {
-  //   // alert(user);
+  //   alert(user);
   //   if(!user && !(router.pathname === '/login')){
   //     router.push('/login')
   //     return

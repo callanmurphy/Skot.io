@@ -48,48 +48,46 @@ export default function Accounts(props) {
     }
 
     return (
+      <div>
         <div className={styles.twoColumns}>
-          <div>
-            <div>
-              <select className={styles.drop}>
-                { groups.map((item, index) => (
-                    <option key={index}>{item.title}</option>
-                ))}
-              </select>
-              <SearchBar setData={setData} />
-            </div>
-            <table className={styles.mainTable} cellSpacing="0">
-            <tr>
-              { columns.map((item, index) =>
-                // <th onClick={() => { item.sort !== null && setSort(item, !item.sort); item.sort === null && setSort(item, true) }} style={{cursor: 'pointer'}}>
-                <th key={index}>  
-                  {item.title}
-                  {/* {item.sort !== null && <div> <Image src={"/sort.svg"} alt="Site Logo" width='20' height='20' alt="sort" className={!item.sort && "flip"}/> </div> } */}
-                </th>
-              )}
-              { selections.map((item, index) =>
-                <th key={index}>
-                  <select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
-                    { headings.map(option => (<option key={option} value={option} selected={option === item ? "selected" : null}>{option}</option>)) }
-                  </select>
-                </th>
-              )}
-              <th></th>
-            </tr>
-            { data.map((account, index) => (
-              <tr key={account + index}>
-                <td>{account["First Name"]}</td>
-                <td>{account["Surname"]}</td>
-                <td>{account["Account Manager"]}</td>
-                <td>{account[selected1]}</td>
-                <td>{account[selected2]}</td>
-                <td><button type="button" onClick={() => router.push('/accounts/' + account._id.toString())}>View</button></td>
-              </tr>
+          <select className={styles.drop}>
+            { groups.map((item, index) => (
+                <option key={index}>{item.title}</option>
             ))}
-            </table>
-          </div>
+          </select>
+          <SearchBar setData={setData} />
         </div>
-      )
+        <table className={styles.mainTable} cellSpacing="0">
+        <tr>
+          { columns.map((item, index) =>
+            // <th onClick={() => { item.sort !== null && setSort(item, !item.sort); item.sort === null && setSort(item, true) }} style={{cursor: 'pointer'}}>
+            <th key={index}>  
+              {item.title}
+              {/* {item.sort !== null && <div> <Image src={"/sort.svg"} alt="Site Logo" width='20' height='20' alt="sort" className={!item.sort && "flip"}/> </div> } */}
+            </th>
+          )}
+          { selections.map((item, index) =>
+            <th key={index}>
+              <select onChange={(e) => {setSelectedFunctions[index](e.target.value); setSelections([selected1, selected2])}}>
+                { headings.map(option => (<option key={option} value={option} selected={option === item ? "selected" : null}>{option}</option>)) }
+              </select>
+            </th>
+          )}
+          <th></th>
+        </tr>
+        { data.map((account, index) => (
+          <tr key={account + index}>
+            <td>{account["First Name"]}</td>
+            <td>{account["Surname"]}</td>
+            <td>{account["Account Manager"]}</td>
+            <td>{account[selected1]}</td>
+            <td>{account[selected2]}</td>
+            <td><button type="button" onClick={() => router.push('/accounts/' + account._id.toString())}>View</button></td>
+          </tr>
+        ))}
+        </table>
+      </div>
+    )
 }
 
 export async function getServerSideProps() {

@@ -70,13 +70,15 @@
     left: 0px;
     top: 80px;
     margin-bottom: 20px;
-    background-color: #ececec;
+    background-color: #202020;
   }
   .hamburgerOpen li {
     list-style: none;
-    text-decoration: underline;
-    border-bottom: 1px solid #121212;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid #757575;
     padding: 20px 10px;
-    font-size: 20px;
+    font-size: 18px;
   }
 }

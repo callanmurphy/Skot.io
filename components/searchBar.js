@@ -20,7 +20,7 @@ export const SearchBar = (props) => {
     fetchData(e.target.value);
   }
 
-  return (<div style={{alignItems: 'left'}}>
+  return (
         <input 
           className={styles.searchBar}
           type="text"
@@ -29,7 +29,6 @@ export const SearchBar = (props) => {
           value={query}
           onChange={(e) => handleChange(e)}
         />
-      </div>
     )
 }
 

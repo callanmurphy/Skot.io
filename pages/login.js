@@ -49,8 +49,9 @@ class Login extends Component {
       }
     })
     .then((res) => {
-      alert(this.state.email)
-      this.props.setUser(res);
+      console.log(res)
+      // alert(this.state.email)
+      // this.props.setUser(res);
     })
     .catch((res) => {
       console.log(error);
