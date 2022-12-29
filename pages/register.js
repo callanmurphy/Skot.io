@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { Alert } from "../components/alert";
 import Image from "next/image";
-// import { connectToDatabase } from "../util/mongodb";
+import { Alert } from "../components/alert";
+import { connectToDatabase } from "../util/mongodb";
 // import axios from 'axios';
 const axios = require("axios").default;
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
+    console.log(props.properties);
     this.state = {
       email: "",
       password: "",
-      alertShow: false,
-      alertType: "error",
-      alertText: "",
+      showAlert: true,
       user: null,
     };
   }
@@ -54,25 +53,6 @@ class Login extends Component {
       `/api/users?email=${this.state.email}&password:${this.state.password}`
     );
     const res = await data.json();
-    if (!res.emailExists) {
-      this.setState({
-        alertShow: true,
-        alertType: "error",
-        alertText: "Email not found",
-      });
-    } else if (!res.correctPassword) {
-      this.setState({
-        alertShow: true,
-        alertType: "error",
-        alertText: "Incorrect password",
-      });
-    } else {
-      this.setState({
-        alertShow: true,
-        alertType: "success",
-        alertText: "Logged in successfully",
-      });
-    }
     console.log(res);
     // alert(data.json());
     // axios
@@ -95,14 +75,8 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.authenticate();
-    // this.addUser();
-  };
-
-  toggleAlert = () => {
-    this.setState((prevState) => ({
-      alertShow: !prevState,
-    }));
+    // this.authenticate();
+    this.addUser();
   };
 
   render() {
@@ -112,8 +86,8 @@ class Login extends Component {
           <div>
             <Image src={"/icon.svg"} alt="Site Logo" width="100" height="100" />
           </div>
-          {/* <h1>Log In to Skot.io</h1> */}
-          <h1>Account Login</h1>
+          {/* <h1>Create an Account</h1> */}
+          <h1>Create Account</h1>
           <div className={"inner-container"}>
             {this.state.alertShow && (
               <Alert
@@ -140,9 +114,9 @@ class Login extends Component {
                 }
                 placeholder={"Password"}
               />
-              <input type="submit" value="Log In" className={"submit"} />
+              <input type="submit" value="Register" className={"submit"} />
               <p>
-                Need an account? <a href="/register">Sign up</a>
+                Already have an account? <a href="/login">Login</a>
               </p>
             </form>
           </div>
@@ -183,7 +157,6 @@ class Login extends Component {
             text-align: center;
             background-color: #121212;
             color: #fff;
-            outline: none !important;
             border: none;
             margin-bottom: 15px;
           }
@@ -193,8 +166,8 @@ class Login extends Component {
             cursor: pointer;
           }
 
-          @media (max-width: 800px) {
-            .inner-container {
+          @media (max-width: 700px) {
+            .container {
               width: 80%;
             }
 
@@ -214,23 +187,23 @@ class Login extends Component {
   }
 }
 
-// export async function getServerSideProps(context) {
-//   const { db } = await connectToDatabase();
+export async function getServerSideProps(context) {
+  const { db } = await connectToDatabase();
 
-//   const users = await db
-//     .collection("users")
-//     .find({})
-//     .sort({ metacritic: -1 })
-//     .limit(10)
-//     .toArray();
+  const users = await db
+    .collection("users")
+    .find({})
+    .sort({ metacritic: -1 })
+    .limit(10)
+    .toArray();
 
-//   const properties = JSON.parse(JSON.stringify(users));
+  const properties = JSON.parse(JSON.stringify(users));
 
-//   console.log(properties);
+  console.log(properties);
 
-//   return {
-//     props: { properties: properties },
-//   };
-// }
+  return {
+    props: { properties: properties },
+  };
+}
 
-export default Login;
+export default Register;

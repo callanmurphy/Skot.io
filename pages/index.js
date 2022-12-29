@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router' 
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/login')
-  })
+    router.push("/login");
+  });
 
   return (
     <div className="container">
       <main>
-        <h2>
-          Skot.io – Alpha v1.2
-        </h2>
+        <h2>Skot.io – Alpha v1.2</h2>
       </main>
 
-      <style jsx>{`
+      <style jsx="true">{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -33,5 +31,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
