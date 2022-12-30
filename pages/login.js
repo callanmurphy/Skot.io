@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Alert } from "../components/alert";
 import Image from "next/image";
-// import { connectToDatabase } from "../util/mongodb";
-// import axios from 'axios';
-const axios = require("axios").default;
+import Router from "next/router";
 
 class Login extends Component {
   constructor(props) {
@@ -24,73 +22,27 @@ class Login extends Component {
     });
   };
 
-  addUser = () => {
-    axios
-      .post("/api/users", {
-        email: this.state.email,
-        password: this.state.password,
-      })
-      .then((res) => {
-        alert(res);
-        this.props.setUser(res);
-      })
-      .catch((res) => {
-        console.log(error);
-      });
-  };
-
-  // authenticate = async () => {
-  //   const response = await axios.get('/api/users', {
-  //     params: {
-  //       email: this.state.email
-  //     }
-  //   })
-  //   return response.data;
-  // }
-
   authenticate = async () => {
-    console.log("authenticating...");
-    const data = await fetch(
-      `/api/users?email=${this.state.email}&password:${this.state.password}`
+    const res = await fetch(
+      `/api/users?email=${this.state.email}&password=${this.state.password}`
     );
-    const res = await data.json();
-    if (!res.emailExists) {
+    const data = await res.json();
+    if (!data.success) {
       this.setState({
         alertShow: true,
         alertType: "error",
-        alertText: "Email not found",
-      });
-    } else if (!res.correctPassword) {
-      this.setState({
-        alertShow: true,
-        alertType: "error",
-        alertText: "Incorrect password",
+        alertText: data.message,
       });
     } else {
       this.setState({
-        alertShow: true,
+        alertShow: false,
         alertType: "success",
-        alertText: "Logged in successfully",
+        alertText: data.message,
       });
+      this.props.setUser(this.state.email);
+      Router.push("/accounts");
     }
-    console.log(res);
-    // alert(data.json());
-    // axios
-    //   .get("/api/users", {
-    //     params: {
-    //       email: this.state.email,
-    //       password: this.state.password,
-    //     },
-    //   })
-    //   .get("/api/test")
-    //   .then((res) => {
-    //     console.log("authentication [res]:", res);
-    //     // alert(this.state.email)
-    //     // this.props.setUser(res);
-    //   })
-    //   .catch((res) => {
-    //     console.log("authentication [error]:", error);
-    //   });
+    console.log(data);
   };
 
   handleSubmit = async (e) => {

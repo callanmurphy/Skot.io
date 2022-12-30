@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="container">
       <main>
-        <h2>Skot.io – Alpha v1.2</h2>
+        <h2>Skot.io – Alpha</h2>
       </main>
 
       <style jsx="true">{`

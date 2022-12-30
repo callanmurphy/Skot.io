@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import Image from "next/image";
+import Router from "next/router";
 import { Alert } from "../components/alert";
 import { connectToDatabase } from "../util/mongodb";
+import { useRouter } from "next/router";
 // import axios from 'axios';
 const axios = require("axios").default;
+
+// const router = useRouter();
 
 class Register extends Component {
   constructor(props) {
     super(props);
-    console.log(props.properties);
     this.state = {
       email: "",
       password: "",
@@ -23,37 +26,52 @@ class Register extends Component {
     });
   };
 
-  addUser = () => {
-    axios
-      .post("/api/users", {
+  addUser = async () => {
+    // axios
+    //   .post("/api/users", {
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //   })
+    //   .then((res) => {
+    //     alert(res?.email);
+    //     this.props.setUser(res?.email);
+    //   })
+    //   .catch((res) => {
+    //     console.log(error);
+    //   });
+    const res = await fetch(`/api/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-      })
-      .then((res) => {
-        alert(res);
-        this.props.setUser(res);
-      })
-      .catch((res) => {
-        console.log(error);
+      }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+      this.setState({
+        alertShow: true,
+        alertType: "error",
+        alertText: data.message,
       });
+    } else {
+      this.setState({
+        alertShow: false,
+        alertType: "success",
+        alertText: data.message,
+      });
+      this.props.setUser(this.state.email);
+      Router.push("/accounts");
+    }
   };
 
-  // authenticate = async () => {
-  //   const response = await axios.get('/api/users', {
-  //     params: {
-  //       email: this.state.email
-  //     }
-  //   })
-  //   return response.data;
-  // }
-
   authenticate = async () => {
-    console.log("authenticating...");
-    const data = await fetch(
+    const res = await fetch(
       `/api/users?email=${this.state.email}&password:${this.state.password}`
     );
-    const res = await data.json();
-    console.log(res);
+    const data = await res.json();
     // alert(data.json());
     // axios
     //   .get("/api/users", {
